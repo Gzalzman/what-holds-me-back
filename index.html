@@ -1367,10 +1367,12 @@
     document.getElementById('education').style.display = 'block';
 
     // WhatsApp redirect — fires from the submit event (user gesture)
-    var coachPhone = '972528330884';
+    var coachPhone = '972528330884';   // destination only — never used as userPhone
+    var userPhone  = normalizedPhone;  // from the form input
+
     var message = 'היי גל, מילאתי את השאלון.\n' +
       'שם: ' + name + '\n' +
-      'טלפון: ' + normalizedPhone + '\n' +
+      'טלפון: ' + userPhone + '\n' +
       'התוצאה שלי: ' + resultTitle + '\n\n' +
       'אשמח לקבל הסבר קצר על האפשרויות בתהליך האימון.';
     if (callback) message += '\n\nאשמח שתחזרו אליי לבדיקת התאמה קצרה.';
@@ -1383,7 +1385,25 @@
     waBtn.href = whatsappUrl;
     document.getElementById('thankyouWaCta').style.display = 'block';
 
-    window.location.href = whatsappUrl;
+    // Background lead backup — then always redirect to WhatsApp
+    var leadEndpoint = 'https://script.google.com/macros/s/AKfycbzC9_hPwoZWTFgL48GnrO4V7N_W5-xeXykJXYHEeRE6xbLmk3-TYfnNfx7Ha0XLnI2AHg/exec';
+    fetch(leadEndpoint, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name:         name,
+        phone:        userPhone,
+        resultTitle:  resultTitle,
+        resultKey:    resultType,
+        pageUrl:      window.location.href,
+        submittedAt:  new Date().toISOString()
+      })
+    }).catch(function(error) {
+      console.log('Lead backup failed:', error);
+    }).finally(function() {
+      window.location.href = whatsappUrl;
+    });
   }
 
   // ── Init ─────────────────────────────────────────────
