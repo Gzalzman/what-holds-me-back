@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>מה הגוף שלך מנסה להגיד לך? | גל זלצמן</title>
+  <style>
+    /* ─── Reset & Base ─────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:         #FAF7F2;
+      --bg-card:    #FFFFFF;
+      --sage:       #7A9E7E;
+      --sage-light: #B8CEB9;
+      --sage-pale:  #EBF2EB;
+      --warm:       #C9A96E;
+      --warm-pale:  #F5ECD7;
+      --text:       #3A3530;
+      --text-soft:  #6B6258;
+      --text-muted: #9B9088;
+      --radius:     18px;
+      --radius-sm:  10px;
+      --shadow:     0 4px 24px rgba(90,75,60,0.08);
+      --shadow-md:  0 8px 40px rgba(90,75,60,0.12);
+      --font:       'Segoe UI', 'Arial Hebrew', Arial, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.7;
+      direction: rtl;
+    }
+
+    /* ─── Typography ───────────────────────────────── */
+    h1 { font-size: clamp(1.7rem, 5vw, 2.4rem); line-height: 1.3; font-weight: 700; }
+    h2 { font-size: clamp(1.3rem, 4vw, 1.8rem); line-height: 1.35; font-weight: 700; }
+    h3 { font-size: clamp(1.1rem, 3vw, 1.35rem); font-weight: 600; }
+    p  { color: var(--text-soft); }
+
+    /* ─── Layout ───────────────────────────────────── */
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    section { padding: 56px 0; }
+
+    /* ─── Header ───────────────────────────────────── */
+    header {
+      background: var(--bg-card);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(90,75,60,0.06);
+    }
+
+    .header-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .header-logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--sage-light);
+      flex-shrink: 0;
+    }
+
+    .header-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    .header-title {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    /* ─── Hero ─────────────────────────────────────── */
+    #hero {
+      background: linear-gradient(160deg, var(--warm-pale) 0%, var(--bg) 60%);
+      padding: 72px 0 56px;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      background: var(--sage-pale);
+      color: var(--sage);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    #hero h1 {
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    #hero h1 span {
+      color: var(--sage);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--text-soft);
+      max-width: 520px;
+      margin: 0 auto 32px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--sage);
+      color: #fff;
+      font-size: 1.05rem;
+      font-weight: 600;
+      padding: 14px 36px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 18px rgba(122,158,126,0.35);
+      font-family: var(--font);
+    }
+
+    .btn-primary:hover {
+      background: #6a8e6e;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba(122,158,126,0.45);
+    }
+
+    .hero-disclaimer {
+      margin-top: 18px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* ─── Intro Card ───────────────────────────────── */
+    #intro { padding: 48px 0; }
+
+    .card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 36px 32px;
+    }
+
+    .card-icon {
+      margin-bottom: 18px;
+      line-height: 1;
+    }
+
+    .card-icon svg {
+      width: 52px;
+      height: 52px;
+    }
+
+    .card h2 { margin-bottom: 14px; color: var(--text); }
+
+    .card p + p { margin-top: 10px; }
+
+    .card .btn-primary { margin-top: 28px; }
+
+    /* ─── Exercise Section ─────────────────────────── */
+    #exercise { padding: 40px 0 56px; }
+
+    #exercise > .container > h2 {
+      text-align: center;
+      margin-bottom: 32px;
+      color: var(--text);
+    }
+
+    .progress-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .progress-bar-bg {
+      flex: 1;
+      height: 6px;
+      background: var(--sage-pale);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--sage);
+      border-radius: 10px;
+      transition: width 0.4s ease;
+    }
+
+    .progress-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .step-card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 32px 28px;
+      display: none;
+      animation: fadeUp 0.35s ease both;
+    }
+
+    .step-card.active { display: block; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .step-num {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--sage);
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+
+    .step-card h3 {
+      color: var(--text);
+      margin-bottom: 22px;
+      line-height: 1.45;
+    }
+
+    .step-helper {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-top: -12px;
+      margin-bottom: 18px;
+    }
+
+    /* Open text step */
+    .step-textarea {
+      width: 100%;
+      border: 1.5px solid var(--sage-light);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      font-size: 1rem;
+      font-family: var(--font);
+      color: var(--text);
+      background: var(--bg);
+      resize: vertical;
+      min-height: 80px;
+      outline: none;
+      direction: rtl;
+      transition: border-color 0.2s;
+    }
+    .step-textarea:focus { border-color: var(--sage); }
+
+    /* Options */
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .option-btn {
+      background: var(--bg);
+      border: 1.5px solid #E0D9D0;
+      border-radius: var(--radius-sm);
+      padding: 11px 14px;
+      font-size: 0.92rem;
+      font-family: var(--font);
+      color: var(--text-soft);
+      cursor: pointer;
+      text-align: right;
+      transition: border-color 0.2s, background 0.2s, color 0.2s, transform 0.15s;
+      line-height: 1.4;
+    }
+
+    .option-btn:hover {
+      border-color: var(--sage-light);
+      background: var(--sage-pale);
+      color: var(--text);
+    }
+
+    .option-btn.selected {
+      border-color: var(--sage);
+      background: var(--sage-pale);
+      color: var(--sage);
+      font-weight: 600;
+    }
+
+    .option-btn.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .step-nav {
+      display: flex;
+      justify-content: flex-start;
+      margin-top: 24px;
+      gap: 10px;
+    }
+
+    .btn-next {
+      background: var(--sage);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 11px 28px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: var(--font);
+      transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 3px 12px rgba(122,158,126,0.3);
+    }
+
+    .btn-next:hover { background: #6a8e6e; transform: translateY(-1px); }
+    .btn-next:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+
+    .btn-back {
+      background: transparent;
+      color: var(--text-muted);
+      border: 1.5px solid #E0D9D0;
+      border-radius: 50px;
+      padding: 10px 22px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      font-family: var(--font);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-back:hover { border-color: var(--sage-light); color: var(--text-soft); }
+
+    /* ─── Education Section ────────────────────────── */
+    #education {
+      background: var(--warm-pale);
+      padding: 56px 0;
+    }
+
+    .edu-card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 36px 32px;
+    }
+
+    .edu-card h2 { margin-bottom: 18px; }
+
+    .edu-list {
+      list-style: none;
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .edu-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: var(--text-soft);
+      font-size: 0.95rem;
+    }
+
+    .edu-list li::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--sage);
+      flex-shrink: 0;
+      margin-top: 8px;
+    }
+
+    /* ─── Completion Bridge ────────────────────────── */
+    #completion {
+      padding: 48px 0 32px;
+      text-align: center;
+    }
+
+    .completion-card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 32px 28px;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .completion-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 14px;
+    }
+
+    .completion-card p {
+      color: var(--text-soft);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    /* ─── Lead Capture ─────────────────────────────── */
+    #lead { padding: 16px 0 32px;}
+
+
+    /* Full-image container — overlay sits inside it */
+    .lead-bg {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      line-height: 0;
+      background: #f7efe4;
+    }   
+
+    /* Natural proportions — no crop, no fixed height */
+    .lead-bg-img {
+      width: 100%;
+      display: block;
+      transform: translateY(-32px) scale(1.05);
+      transform-origin: center top;
+    }
+
+    /* Form floats over the table area at the bottom of the image */
+    .lead-overlay {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 22px;
+
+      padding: 16px 18px 14px;
+      border-radius: 22px;
+
+      background: rgba(250, 247, 242, 0.72);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+
+      border: 1px solid rgba(90, 75, 60, 0.14);
+      box-shadow: 0 14px 34px rgba(90, 75, 60, 0.16);
+
+      line-height: 1.55;
+    }
+
+    .lead-overlay h2 {
+      font-size: clamp(1.05rem, 4vw, 1.25rem);
+      line-height: 1.35;
+      color: var(--text);
+      margin-bottom: 12px;
+      text-align: center;
+      font-weight: 800;
+    }
+
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+
+    .form-field label {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+
+    .form-field input {
+      border: 1.5px solid rgba(90, 75, 60, 0.22);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      font-size: 0.98rem;
+      font-family: var(--font);
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.82);
+      outline: none;
+      direction: rtl;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-field input:focus {
+      border-color: var(--sage);
+      box-shadow: 0 0 0 3px rgba(122, 158, 126, 0.16);
+    }
+
+    .optional-tag {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--sage);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 13px 14px;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      font-family: var(--font);
+      margin-top: 4px;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 18px rgba(122,158,126,0.35);
+    }
+
+    .btn-submit:hover {
+      background: #6a8e6e;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba(122,158,126,0.45);
+    }
+
+    .form-checkbox-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      margin: 4px 0 12px;
+      cursor: pointer;
+    }
+
+    .form-checkbox-row input[type="checkbox"] {
+      width: 17px;
+      height: 17px;
+      flex-shrink: 0;
+      margin-top: 4px;
+      accent-color: var(--sage);
+      cursor: pointer;
+    }
+
+    .form-checkbox-row span {
+      font-size: 0.84rem;
+      color: var(--text);
+      line-height: 1.45;
+      font-weight: 500;
+    }
+
+    .form-disclaimer {
+      margin-top: 10px;
+      font-size: 0.74rem;
+      color: var(--text-soft);
+      text-align: center;
+      line-height: 1.45;
+    }
+
+    /* ─── Screen visibility — hidden until JS shows them ── */
+    #intro, #exercise, #completion, #lead, #education, #thankyou, #whatsapp {
+      display: none;
+    }
+
+    /* ─── Thank You ────────────────────────────────── */
+    #thankyou { padding: 56px 0; }
+
+    .thankyou-card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      padding: 44px 32px 40px;
+    }
+
+    .result-header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 26px;
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+    }
+
+    .thankyou-icon { font-size: 2.6rem; margin-bottom: 12px; }
+    .result-header h2 { font-size: 1.25rem; margin-bottom: 6px; color: var(--text); }
+    .result-header p { font-size: 0.88rem; color: var(--text-muted); }
+
+    .result-type-badge {
+      display: inline-block;
+      background: var(--sage-pale);
+      color: var(--sage);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+
+    .result-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 14px;
+      line-height: 1.35;
+    }
+
+    .result-explanation {
+      font-size: 0.96rem;
+      color: var(--text-soft);
+      line-height: 1.75;
+      margin-bottom: 22px;
+    }
+
+    .result-answers {
+      background: var(--bg);
+      border-radius: var(--radius-sm);
+      padding: 18px 20px;
+      margin-bottom: 22px;
+      border-right: 3px solid var(--sage-light);
+    }
+
+    .result-answers p {
+      font-size: 0.93rem;
+      color: var(--text-soft);
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .result-answers strong { color: var(--text); font-weight: 600; }
+
+    .result-coaching-q {
+      background: var(--warm-pale);
+      border-radius: var(--radius-sm);
+      padding: 18px 20px;
+      margin-bottom: 24px;
+    }
+
+    .result-coaching-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--warm);
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+
+    .result-coaching-q p {
+      font-size: 0.98rem;
+      color: var(--text);
+      font-weight: 500;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .result-cta-soft {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      text-align: center;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      padding-top: 20px;
+      margin: 0;
+    }
+
+    /* ─── WhatsApp CTA ─────────────────────────────── */
+    #whatsapp {
+      background: var(--sage-pale);
+      padding: 52px 0;
+      text-align: center;
+    }
+
+    #whatsapp h3 { color: var(--text); margin-bottom: 10px; }
+    #whatsapp p  { color: var(--text-soft); margin-bottom: 24px; max-width: 480px; margin-left: auto; margin-right: auto; }
+
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #25D366;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 13px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-family: var(--font);
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 18px rgba(37,211,102,0.3);
+    }
+
+    .btn-whatsapp:hover {
+      background: #20ba5a;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 22px rgba(37,211,102,0.4);
+    }
+
+    .whatsapp-icon {
+      width: 22px;
+      height: 22px;
+      fill: #fff;
+    }
+
+    /* ─── Footer ───────────────────────────────────── */
+    footer {
+      background: var(--bg-card);
+      border-top: 1px solid rgba(0,0,0,0.06);
+      padding: 24px 0;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ─── Responsive ───────────────────────────────── */
+    @media (max-width: 480px) {
+      .card, .step-card, .edu-card, .thankyou-card {
+        padding: 26px 20px;
+      }
+
+      .options-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .option-btn.full-width {
+        grid-column: auto;
+      }
+
+      /* Step 1: stay 2-column and compact on mobile */
+      #step-1 .options-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+
+      #step-1 .option-btn {
+        padding: 9px 10px;
+        font-size: 0.88rem;
+      }
+
+      #step-1 .step-textarea {
+        min-height: 56px;
+        font-size: 0.9rem;
+      }
+
+      .step-nav { flex-direction: row-reverse; }
+
+      /* ─── Post-exercise flow spacing ───────────────── */
+      #exercise        { padding-bottom: 24px; }
+      #completion      { padding: 20px 0 16px; }
+      .completion-card { padding: 24px 20px; }
+      #lead            { padding: 12px 0 24px; }
+      .lead-overlay    { 
+                         left: 14px;
+                         right: 14px;
+                         bottom: 18px;
+                         padding: 14px 15px 12px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════ HEADER ═══════════════════════════════ -->
+<header>
+  <div class="header-inner">
+    <img src="logo_coach.jpeg" alt="גל זלצמן" class="header-logo" />
+    <div>
+      <div class="header-name">גל זלצמן</div>
+      <div class="header-title">מאמן אישי מוסמך</div>
+    </div>
+  </div>
+</header>
+
+
+<!-- ═══════════════════════════════ HERO ═════════════════════════════════ -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-eyebrow">תרגיל קצר · 3–4 דקות</div>
+    <h1>מה הגוף שלך<br /><span>מנסה להגיד לך?</span></h1>
+    <p class="hero-sub">
+      תרגיל קצר של 3–4 דקות שיעזור לך לזהות איפה מתח, עומס או חרדה פוגשים אותך בגוף —
+      ואיזה קול פנימי אולי עומד מאחוריהם.
+    </p>
+    <button class="btn-primary" onclick="scrollToIntro()">להתחיל את התרגיל</button>
+    <p class="hero-disclaimer">זה לא אבחון ולא טיפול — רק רגע קצר של הקשבה למה שקורה בפנים.</p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ INTRO CARD ═══════════════════════════ -->
+<section id="intro">
+  <div class="container">
+    <div class="card">
+      <div class="card-icon">
+        <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- head -->
+          <circle cx="26" cy="12" r="6.5" stroke="#7A9E7E" stroke-width="2" fill="none"/>
+          <!-- shoulders / upper body arc -->
+          <path d="M13 36 C13 25 39 25 39 36" stroke="#7A9E7E" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <!-- heartbeat / pulse line at chest -->
+          <path d="M18 31 L21 26.5 L24.5 32.5 L27 28.5 L30 31" stroke="#7A9E7E" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h2>השער דרך הגוף</h2>
+      <p>
+        לפעמים זה מופיע כלסת נעולה, שינה קלה, לחץ בחזה, אבן בבטן, נשימה קצרה,
+        כתפיים מכווצות או מחשבות שלא עוצרות. לא תמיד נקרא לזה חרדה — לפעמים זה
+        פשוט הגוף שמאותת שמשהו בפנים מבקש תשומת לב.
+      </p>
+      <p>
+        כשאנחנו מקשיבים לתחושה הגופנית, אנחנו יכולים להתחקות אחריה ולמצוא את
+        <strong>הקול הפנימי</strong> שמפעיל אותה. הקול הזה לא תמיד "אנחנו" —
+        לעיתים הוא מנגנון הגנה שנוצר בשלב כלשהו בחיים, כדי למנוע מאיתנו כאב.
+      </p>
+      <p>
+        התרגיל הבא מזמין אותך לרגע של <em>התבוננות אישית ראשונית</em> —
+        ללא שיפוט, ללא מסקנות, רק הקשבה.
+      </p>
+      <button class="btn-primary" onclick="scrollToExercise()">הבנתי, נתחיל</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ EXERCISE ════════════════════════════ -->
+<section id="exercise">
+  <div class="container">
+    <h2>התרגיל</h2>
+
+    <!-- Progress -->
+    <div class="progress-wrap">
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressFill" style="width:0%"></div>
+      </div>
+      <span class="progress-label" id="progressLabel">שלב 1 מתוך 6</span>
+    </div>
+
+    <!-- Step 1 — Life area -->
+    <div class="step-card active" id="step-1">
+      <div class="step-num">שלב 1 מתוך 7</div>
+      <h3>באיזה תחום בחיים המתח, העומס או התקיעות הכי מורגשים אצלך כרגע?</h3>
+      <div class="options-grid" id="opts-1">
+        <button class="option-btn" data-step="1" data-val="עבודה / קריירה">עבודה / קריירה</button>
+        <button class="option-btn" data-step="1" data-val="זוגיות / משפחה">זוגיות / משפחה</button>
+        <button class="option-btn" data-step="1" data-val="קבלת החלטות">קבלת החלטות</button>
+        <button class="option-btn" data-step="1" data-val="ביטחון עצמי">ביטחון עצמי</button>
+        <button class="option-btn" data-step="1" data-val="שינוי שאני רוצה לעשות">שינוי שאני רוצה לעשות</button>
+        <button class="option-btn" data-step="1" data-val="עומס כללי">עומס כללי</button>
+      </div>
+      <textarea
+        class="step-textarea"
+        id="textarea-desc-1"
+        placeholder="אחר / בכמה מילים מה קורה שם"
+        oninput="onLifeAreaDesc()"
+        style="margin-top:12px;"
+      ></textarea>
+      <div class="step-nav">
+        <button class="btn-next" id="next-1" onclick="nextStep(1)" disabled>המשך</button>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step-card" id="step-2">
+      <div class="step-num">שלב 2 מתוך 6</div>
+      <h3>איפה התחושה הזו הכי מורגשת אצלך כרגע?</h3>
+      <p class="step-helper">בחר/י את המקום שהכי קרוב למה שאת/ה חווה. לא צריך לדייק — רק לשים לב איפה הגוף מאותת.</p>
+      <div class="options-grid" id="opts-2">
+        <button class="option-btn" data-step="2" data-val="לסת / פנים">לסת / פנים</button>
+        <button class="option-btn" data-step="2" data-val="חזה / נשימה">חזה / נשימה</button>
+        <button class="option-btn" data-step="2" data-val="בטן">בטן</button>
+        <button class="option-btn" data-step="2" data-val="כתפיים / צוואר">כתפיים / צוואר</button>
+        <button class="option-btn" data-step="2" data-val="ראש / מחשבות רצות">ראש / מחשבות רצות</button>
+        <button class="option-btn" data-step="2" data-val="שינה / עייפות">שינה / עייפות</button>
+        <button class="option-btn" data-step="2" data-val="חוסר שקט בגוף">חוסר שקט בגוף</button>
+        <button class="option-btn" data-step="2" data-val="אחר">אחר</button>
+      </div>
+      <div class="step-nav">
+        <button class="btn-next" id="next-2" onclick="nextStep(2)" disabled>המשך</button>
+        <button class="btn-back" onclick="prevStep(2)">חזרה</button>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="step-card" id="step-4">
+      <div class="step-num">שלב 3 מתוך 6</div>
+      <h3>איזה משפט עבר לך בראש ממש לפני שהתחושה התחילה?</h3>
+      <div class="options-grid" id="opts-4">
+        <button class="option-btn" data-step="4" data-val="זה גדול עליי">זה גדול עליי</button>
+        <button class="option-btn" data-step="4" data-val="אני לא מספיק טוב/ה">אני לא מספיק טוב/ה</button>
+        <button class="option-btn" data-step="4" data-val="הם יראו שאני לא יודע/ת">הם יראו שאני לא יודע/ת</button>
+        <button class="option-btn" data-step="4" data-val="אני חייב/ת להצליח">אני חייב/ת להצליח</button>
+        <button class="option-btn" data-step="4" data-val="משהו רע עומד לקרות">משהו רע עומד לקרות</button>
+        <button class="option-btn" data-step="4" data-val="אני מאכזב/ת מישהו">אני מאכזב/ת מישהו</button>
+        <button class="option-btn full-width" data-step="4" data-val="אחר">אחר</button>
+      </div>
+      <div class="step-nav">
+        <button class="btn-next" id="next-4" onclick="nextStep(4)" disabled>המשך</button>
+        <button class="btn-back" onclick="prevStep(4)">חזרה</button>
+      </div>
+    </div>
+
+    <!-- Step 5 -->
+    <div class="step-card" id="step-5">
+      <div class="step-num">שלב 4 מתוך 6</div>
+      <h3>איך הקול הזה נשמע?</h3>
+      <div class="options-grid" id="opts-5">
+        <button class="option-btn" data-step="5" data-val="ביקורתי">ביקורתי</button>
+        <button class="option-btn" data-step="5" data-val="לחוץ">לחוץ</button>
+        <button class="option-btn" data-step="5" data-val="מאשים">מאשים</button>
+        <button class="option-btn" data-step="5" data-val="מפחיד">מפחיד</button>
+        <button class="option-btn" data-step="5" data-val="מקטין">מקטין</button>
+        <button class="option-btn" data-step="5" data-val="שקט אבל מתמיד">שקט אבל מתמיד</button>
+        <button class="option-btn full-width" data-step="5" data-val="מוכר — כמו קול של מישהו מהעבר">מוכר — כמו קול של מישהו מהעבר</button>
+      </div>
+      <div class="step-nav">
+        <button class="btn-next" id="next-5" onclick="nextStep(5)" disabled>המשך</button>
+        <button class="btn-back" onclick="prevStep(5)">חזרה</button>
+      </div>
+    </div>
+
+    <!-- Step 6 -->
+    <div class="step-card" id="step-6">
+      <div class="step-num">שלב 5 מתוך 6</div>
+      <h3>מה ייתכן שהקול הזה מנסה למנוע ממך להרגיש?</h3>
+      <div class="options-grid" id="opts-6">
+        <button class="option-btn" data-step="6" data-val="כישלון">כישלון</button>
+        <button class="option-btn" data-step="6" data-val="ביקורת">ביקורת</button>
+        <button class="option-btn" data-step="6" data-val="דחייה">דחייה</button>
+        <button class="option-btn" data-step="6" data-val="בושה">בושה</button>
+        <button class="option-btn" data-step="6" data-val="אכזבה">אכזבה</button>
+        <button class="option-btn" data-step="6" data-val="חוסר שליטה">חוסר שליטה</button>
+        <button class="option-btn full-width" data-step="6" data-val="פגיעה">פגיעה</button>
+      </div>
+      <div class="step-nav">
+        <button class="btn-next" id="next-6" onclick="nextStep(6)" disabled>המשך</button>
+        <button class="btn-back" onclick="prevStep(6)">חזרה</button>
+      </div>
+    </div>
+
+    <!-- Step 7 -->
+    <div class="step-card" id="step-7">
+      <div class="step-num">שלב 6 מתוך 6</div>
+      <h3>האם יכול להיות שהקול הזה הוא לא "את/ה" — אלא מנגנון הגנה שפועל בתוכך?</h3>
+      <div class="options-grid" id="opts-7">
+        <button class="option-btn full-width" data-step="7" data-val="כן, זה מרגיש כמו מנגנון הגנה">כן, זה מרגיש כמו מנגנון הגנה</button>
+        <button class="option-btn full-width" data-step="7" data-val="אולי, לא חשבתי על זה ככה">אולי, לא חשבתי על זה ככה</button>
+        <button class="option-btn full-width" data-step="7" data-val="לא בטוח/ה">לא בטוח/ה</button>
+        <button class="option-btn full-width" data-step="7" data-val="עדיין מרגיש לי שזה אני">עדיין מרגיש לי שזה אני</button>
+      </div>
+      <div class="step-nav">
+        <button class="btn-next" id="next-7" onclick="finishExercise()" disabled>לסיכום שלי</button>
+        <button class="btn-back" onclick="prevStep(7)">חזרה</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ EDUCATION ════════════════════════════ -->
+<!-- ══════════════════════════ COMPLETION BRIDGE ════════════════════════ -->
+<section id="completion">
+  <div class="container">
+    <div class="completion-card">
+      <h2>סיימת את התרגיל 🙏</h2>
+      <p>לפי התשובות שלך אפשר להתחיל לזהות איזה קול פנימי מופיע כשמתח, עומס או תחושה גופנית לא נרגעים.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ LEAD FORM ════════════════════════════ -->
+<section id="lead">
+  <div class="container">
+    <div class="lead-bg">
+      <img src="me.png" alt="גל זלצמן" class="lead-bg-img" />
+      <div class="lead-overlay">
+        <h2>רוצה לקבל את התוצאה האישית שלך בוואטסאפ ?</h2>
+        <form id="leadForm" onsubmit="submitForm(event)">
+          <div class="form-field">
+            <label for="fname">שם פרטי</label>
+            <input type="text" id="fname" name="fname" placeholder="השם שלך" required autocomplete="given-name" />
+          </div>
+          <div class="form-field">
+            <label for="phone">טלפון / וואטסאפ</label>
+            <input type="tel" id="phone" name="phone" placeholder="05X-XXXXXXX" required autocomplete="tel" />
+          </div>
+          <label class="form-checkbox-row">
+            <input type="checkbox" id="callbackCheck" />
+            <span>אשמח שתחזרו אליי לבדיקת התאמה קצרה</span>
+          </label>
+          <button type="submit" class="btn-submit">שלחו לי את התוצאה בוואטסאפ</button>
+        </form>
+        <p class="form-disclaimer">
+          בלחיצה על הכפתור, הפרטים והתשובות שלך יישלחו לגל לצורך שליחת התוצאה והסבר קצר בוואטסאפ.<br />
+          התרגיל אינו אבחון או טיפול.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ THANK YOU ════════════════════════════ -->
+<section id="thankyou">
+  <div class="container">
+    <div class="thankyou-card">
+      <div class="result-header">
+        <div class="thankyou-icon">🙏</div>
+        <h2>תודה, הפרטים התקבלו 🙏</h2>
+        <p>התוצאה שלך תישלח אליך בוואטסאפ עם הסבר קצר על הקול שעלה בתרגיל.</p>
+      </div>
+      <div id="resultContent"></div>
+      <div id="thankyouWaCta" style="display:none; text-align:center; padding-top:24px; border-top:1px solid rgba(0,0,0,0.06); margin-top:4px;">
+        <a id="thankyouWaBtn" href="#" class="btn-whatsapp" target="_blank" rel="noopener noreferrer">
+          <svg class="whatsapp-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          רוצה לכתוב לגל עכשיו?
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ WHATSAPP ═════════════════════════════ -->
+<section id="whatsapp">
+  <div class="container">
+    <h3>רוצה לדעת יותר?</h3>
+    <p>
+      אפשר גם לבדוק יחד איך עובדים עם הקול הזה בתהליך אימון אישי או קבוצתי.
+    </p>
+    <a
+      id="whatsappLink"
+      href="https://wa.me/972528330884"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn-whatsapp"
+    >
+      <svg class="whatsapp-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      שליחת הודעה לגל בוואטסאפ
+    </a>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════ EDUCATION ═══════════════════════════════ -->
+<section id="education">
+  <div class="container">
+    <div class="edu-card">
+      <div class="card-icon">💡</div>
+      <h2>מה אפשר ללמוד מהתרגיל?</h2>
+      <p>
+        מתח, עומס או חרדה מופיעים לעיתים קרובות קודם בגוף — ורק לאחר מכן הופכים למחשבה מודעת.
+        כשמזהים את התחושה הגופנית, אפשר להתחיל לשאול: <em>מה הקול שמאחוריה?</em>
+      </p>
+      <p style="margin-top:12px;">
+        הקול הפנימי שעלה בתרגיל לא בהכרח אומר אמת — לעיתים הוא מנגנון הגנה
+        שהתגבש בשלב מוקדם בחיים, ומנסה למנוע חוויות כואבות כמו:
+      </p>
+      <ul class="edu-list">
+        <li>ביקורת ושיפוט של אחרים</li>
+        <li>כישלון ואכזבה</li>
+        <li>דחייה וחוסר שייכות</li>
+        <li>חשיפה וחוסר שליטה</li>
+        <li>פגיעה ובושה</li>
+      </ul>
+      <p style="margin-top:16px;">
+        ההכרה שהקול הזה הוא <strong>לא "אני"</strong>, אלא חלק שמגן עליך —
+        היא לעיתים הצעד הראשון לשינוי אמיתי.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ FOOTER ═══════════════════════════════ -->
+<footer>
+  <div class="container">
+    <p>
+      גל זלצמן | מאמן אישי מוסמך<br />
+      התרגיל אינו אבחון רפואי, טיפול נפשי, או תחליף לפנייה לאיש מקצוע.
+    </p>
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════ SCRIPT ═══════════════════════════════ -->
+<script>
+  // ── State ──────────────────────────────────────────
+  const answers = {};
+  let currentStep = 1;
+  const TOTAL = 6;
+  const STEP_SEQUENCE = [1, 2, 4, 5, 6, 7]; // step 3 removed
+
+  // ── Progress ────────────────────────────────────────
+  function updateProgress(step) {
+    const pct = ((step - 1) / TOTAL) * 100;
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressLabel').textContent =
+      'שלב ' + step + ' מתוך ' + TOTAL;
+  }
+
+  // ── Screen transitions ──────────────────────────────
+  var ALL_SCREENS = ['hero', 'intro', 'exercise', 'completion', 'lead', 'education', 'thankyou', 'whatsapp'];
+  var SCREEN_MAP  = {
+    landing:  ['hero'],
+    intro:    ['intro'],
+    exercise: ['exercise'],
+    lead:     ['completion', 'lead'],
+    thankyou: ['thankyou', 'whatsapp']
+  };
+
+  function showScreen(name) {
+    ALL_SCREENS.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) el.style.display = 'none';
+    });
+    (SCREEN_MAP[name] || []).forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) el.style.display = 'block';
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ── Scroll targets ──────────────────────────────────
+  function scrollToIntro() {
+    showScreen('intro');
+  }
+
+  function scrollToExercise() {
+    showScreen('exercise');
+  }
+
+  // ── Option buttons ──────────────────────────────────
+  document.querySelectorAll('.option-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var step = this.dataset.step;
+      // Deselect others in same step
+      document.querySelectorAll('[data-step="' + step + '"]').forEach(function(b) {
+        b.classList.remove('selected');
+      });
+      this.classList.add('selected');
+      answers['step' + step] = this.dataset.val;
+      document.getElementById('next-' + step).disabled = false;
+    });
+  });
+
+  // ── Textarea input ──────────────────────────────────
+  function onTextInput(step) {
+    var val = document.getElementById('textarea-' + step).value.trim();
+    answers['step' + step] = val;
+    document.getElementById('next-' + step).disabled = val.length === 0;
+  }
+
+  // ── Life area optional description ──────────────────
+  function onLifeAreaDesc() {
+    answers.step1desc = document.getElementById('textarea-desc-1').value.trim();
+  }
+
+  // ── Navigation ──────────────────────────────────────
+  function showStep(n) {
+    document.querySelectorAll('.step-card').forEach(function(c) {
+      c.classList.remove('active');
+    });
+    var card = document.getElementById('step-' + n);
+    if (card) {
+      card.classList.add('active');
+      card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    currentStep = n;
+    updateProgress(STEP_SEQUENCE.indexOf(n) + 1);
+  }
+
+  function nextStep(from) {
+    var idx = STEP_SEQUENCE.indexOf(from);
+    if (idx >= 0 && idx < STEP_SEQUENCE.length - 1) showStep(STEP_SEQUENCE[idx + 1]);
+  }
+
+  function prevStep(from) {
+    var idx = STEP_SEQUENCE.indexOf(from);
+    if (idx > 0) showStep(STEP_SEQUENCE[idx - 1]);
+  }
+
+  // ── Finish exercise ─────────────────────────────────
+  function finishExercise() {
+    document.getElementById('progressFill').style.width = '100%';
+    document.getElementById('progressLabel').textContent = 'הושלם ✓';
+    showScreen('lead');
+  }
+
+  // ── Result engine ────────────────────────────────────
+
+  function calcResultType(a) {
+    var s = { not_ready: 0, what_say: 0, overthink: 0, approval: 0, knows_time: 0 };
+
+    // Step 4 — inner voice sentence (primary driver)
+    var s3 = a.step4 || '';
+    if (s3 === 'זה גדול עליי')                   { s.not_ready  += 3; }
+    if (s3 === 'אני לא מספיק טוב/ה')              { s.not_ready  += 2; s.approval   += 1; }
+    if (s3 === 'הם יראו שאני לא יודע/ת')          { s.what_say   += 3; }
+    if (s3 === 'אני חייב/ת להצליח')               { s.overthink  += 2; s.approval   += 1; }
+    if (s3 === 'משהו רע עומד לקרות')              { s.not_ready  += 2; s.knows_time += 1; }
+    if (s3 === 'אני מאכזב/ת מישהו')               { s.approval   += 3; }
+
+    // Step 5 — how the voice sounds
+    var s4 = a.step5 || '';
+    if (s4 === 'ביקורתי')                         { s.approval   += 2; }
+    if (s4 === 'לחוץ')                            { s.overthink  += 2; }
+    if (s4 === 'מאשים')                           { s.what_say   += 2; s.approval   += 1; }
+    if (s4 === 'מפחיד')                           { s.not_ready  += 2; }
+    if (s4 === 'מקטין')                           { s.not_ready  += 1; s.approval   += 1; }
+    if (s4 === 'שקט אבל מתמיד')                   { s.knows_time += 3; }
+    if (s4 === 'מוכר — כמו קול של מישהו מהעבר')  { s.approval   += 2; }
+
+    // Step 6 — what it protects from
+    var s5 = a.step6 || '';
+    if (s5 === 'כישלון')                          { s.not_ready  += 1; s.overthink  += 1; }
+    if (s5 === 'ביקורת')                          { s.approval   += 2; }
+    if (s5 === 'דחייה')                           { s.what_say   += 2; }
+    if (s5 === 'בושה')                            { s.what_say   += 1; s.approval   += 1; }
+    if (s5 === 'אכזבה')                           { s.approval   += 1; s.not_ready  += 1; }
+    if (s5 === 'חוסר שליטה')                      { s.overthink  += 2; }
+    if (s5 === 'פגיעה')                           { s.not_ready  += 2; }
+
+    // Step 7 — is it a protection mechanism?
+    var s6 = a.step7 || '';
+    if (s6 === 'כן, זה מרגיש כמו מנגנון הגנה')    { s.knows_time += 3; }
+    if (s6 === 'אולי, לא חשבתי על זה ככה')        { s.overthink  += 2; }
+    if (s6 === 'לא בטוח/ה')                       { s.not_ready  += 1; }
+    if (s6 === 'עדיין מרגיש לי שזה אני')           { s.not_ready  += 2; }
+
+    var winner = 'not_ready', max = -1;
+    Object.keys(s).forEach(function(k) { if (s[k] > max) { max = s[k]; winner = k; } });
+    return winner;
+  }
+
+  function buildResultHTML(type, a) {
+    var titles = {
+      not_ready:  'אני עוד לא מוכן/ה',
+      what_say:   'מה יגידו?',
+      overthink:  'חושב/ת יותר מדי ופועל/ת פחות מדי',
+      approval:   'מחכה לאישור מבחוץ',
+      knows_time: 'כבר יודע/ת שהגיע הזמן — אבל עדיין לא זז/ה'
+    };
+
+    var explanations = {
+      not_ready:
+        'הקול הזה מופיע לפני פעולה, לפני שינוי, לפני צעד חדש. הוא אומר: ״עוד לא, עוד לא מספיק, עוד לא הגיע הזמן.״ לרוב הוא מתחפש לזהירות — אבל בפנים הוא שומר עליך מפני הפחד שיתגלה שאת/ה לא מספיק.',
+      what_say:
+        'הקול הזה רגיש מאוד למבט של אחרים. הוא עוקב אחרי שאלה אחת: ״אם הם יראו — מה יחשבו?״ לרוב הוא מונע חשיפה, ספונטניות, או פעולה גלויה. הפחד מביקורת או מחרפה הופך למנוע סמוי שמכתיב החלטות.',
+      overthink:
+        'הקול הזה אוהב ניתוח. הוא מחפש עוד מידע, עוד תכנון, עוד ודאות — לפני שמתחילים. בפועל, הוא מחזיק אותך במקום מוכר ובטוח, ומונע את הפעולה שיכולה לשנות משהו.',
+      approval:
+        'הקול הזה מחפש אישור — ממישהו, מהמציאות, מסימן כלשהו — לפני שנע קדימה. הוא חי בשאלה: ״מה חושבים עליי?״ לרוב הוא גדל בסביבה שבה אישור חיצוני היה חשוב יותר מתחושה פנימית.',
+      knows_time:
+        'הקול הזה מיוחד — כי חלק ממך כבר מכיר אותו. יש בך ידיעה שמשהו צריך להשתנות, שהזמן הגיע — אבל הפעולה עדיין לא קורית. לעיתים מה שעוצר הוא לא ספק, אלא הפחד ממה שיקרה אחרי שתתחיל.'
+    };
+
+    var questions = {
+      not_ready:  'מה הצעד הכי קטן שיכולת לעשות — שלא ידרוש ממך מוכנות מלאה?',
+      what_say:   'מה היית עושה אחרת — אם לאף אחד לא הייתה דעה על הבחירה הזו?',
+      overthink:  'בין הניתוח לפעולה — מה חסר לך כדי להתחיל, גם בלי ודאות מלאה?',
+      approval:   'אם את/ה כבר יודע/ת מה נכון לך — מה עוצר אותך מלפעול לפי זה בלי לחכות לאישור?',
+      knows_time: 'אם היית יודע/ת שאת/ה לא יכול/ה להיכשל — מה היה הצעד הראשון שהיית עושה עכשיו?'
+    };
+
+    var ctas = {
+      not_ready:  'אם הקול הזה מוכר לך ממצבים רבים בחיים — אפשר לעבוד עליו יחד בתהליך אימון אישי או קבוצתי עם גל.',
+      what_say:   'אם הקול הזה מכתיב לך החלטות שלא מרגישות שלך — אפשר להתחיל לזהות את הדפוס הזה בתהליך אישי עם גל.',
+      overthink:  'אם את/ה מכיר/ה את הדפוס של חשיבה ללא תנועה — אפשר לעבוד על זה ביחד בתהליך ממוקד עם גל.',
+      approval:   'אם הקול הזה מוכר לך מקשרים, עבודה, או החלטות אישיות — אפשר לבדוק יחד מה מאחוריו.',
+      knows_time: 'אם הידיעה כבר שם אבל התנועה עדיין תקועה — אפשר לבדוק יחד מה עוצר אותה.'
+    };
+
+    var area   = a.step1 || '';
+    var areadesc = a.step1desc || '';
+    var body   = a.step2 || 'הגוף';
+    var sent   = a.step4 || '—';
+    var tone   = a.step5 || '—';
+    var prot   = a.step6 || '—';
+
+    var html = '';
+    html += '<div class="result-type-badge">הקול הפנימי שלך</div>';
+    html += '<div class="result-title">' + titles[type] + '</div>';
+    html += '<p class="result-explanation">' + explanations[type] + '</p>';
+
+    html += '<div class="result-answers"><p>';
+    if (area) {
+      html += 'לפי מה שעלה בתרגיל, התחושה הכי חזקה אצלך כרגע היא בתחום <strong>' + area + '</strong>. ';
+      if (areadesc) html += 'כתבת שם: <strong>״' + areadesc + '״</strong>. ';
+    }
+    html += 'התחושה הגיעה אליך דרך <strong>' + body + '</strong>. ';
+    html += 'המשפט שעבר לך בראש היה <strong>״' + sent + '״</strong>, ';
+    html += 'והקול נשמע <strong>' + tone + '</strong>. ';
+    html += 'יכול להיות שהקול הזה מנסה להגן עליך מפני <strong>' + prot + '</strong>.';
+    html += '</p></div>';
+
+    html += '<div class="result-coaching-q">';
+    html += '<div class="result-coaching-label">שאלה לחשיבה</div>';
+    html += '<p>' + questions[type] + '</p>';
+    html += '</div>';
+
+    html += '<p class="result-cta-soft">' + ctas[type] + '</p>';
+    return html;
+  }
+
+  // ── Phone normalization ──────────────────────────────
+  function normalizeIsraeliPhone(phone) {
+    var cleaned = String(phone || '').replace(/\D/g, '');
+    if (cleaned.startsWith('972')) { return cleaned; }
+    if (cleaned.startsWith('0'))   { return '972' + cleaned.slice(1); }
+    if (cleaned.startsWith('5') && cleaned.length === 9) { return '972' + cleaned; }
+    return cleaned;
+  }
+
+  // ── Form submission ──────────────────────────────────
+  function submitForm(e) {
+    e.preventDefault();
+    var name          = document.getElementById('fname').value.trim();
+    var originalPhone = document.getElementById('phone').value.trim();
+    var normalizedPhone = normalizeIsraeliPhone(originalPhone);
+    var callback = document.getElementById('callbackCheck').checked;
+
+    var resultType = calcResultType(answers);
+    var resultTitles = {
+      not_ready:  'אני עוד לא מוכן/ה',
+      what_say:   'מה יגידו?',
+      overthink:  'חושב/ת יותר מדי ופועל/ת פחות מדי',
+      approval:   'מחכה לאישור מבחוץ',
+      knows_time: 'כבר יודע/ת שהגיע הזמן — אבל עדיין לא זז/ה'
+    };
+    var resultTitle = resultTitles[resultType] || '';
+
+    // Structured payload log (no auto WhatsApp)
+    var submission = {
+      createdAt:           new Date().toISOString(),
+      source:              window.location.href,
+      name:                name,
+      phoneOriginal:       originalPhone,
+      phoneNormalized:     normalizedPhone,
+      lifeArea:            answers.step1     || '',
+      lifeAreaDescription: answers.step1desc || '',
+      bodyLocation:        answers.step2     || '',
+      innerSentence:       answers.step4     || '',
+      voiceTone:           answers.step5     || '',
+      protectedFeeling:    answers.step6     || '',
+      protectionInsight:   answers.step7     || '',
+      result:              resultTitle,
+      callbackRequest:     callback
+    };
+    console.log('Lead:', JSON.stringify(submission, null, 2));
+
+    // Build and inject personalized result
+    document.getElementById('resultContent').innerHTML = buildResultHTML(resultType, answers);
+
+    // Set optional WhatsApp CTA (user must click manually)
+    var waLines = ["ליד חדש מהתרגיל 'השער דרך הגוף' 🌿", ''];
+    waLines.push('שם: '              + name);
+    waLines.push('טלפון: '          + normalizedPhone);
+    waLines.push('טלפון כפי שהוזן: ' + originalPhone);
+    waLines.push('');
+    waLines.push('התוצאה: '         + resultTitle);
+    if (answers.step1) waLines.push('תחום: '           + answers.step1);
+    if (answers.step2) waLines.push('איפה בגוף: '      + answers.step2);
+    if (answers.step4) waLines.push('המשפט שעלה: '     + answers.step4);
+    if (answers.step5) waLines.push('הקול נשמע: '      + answers.step5);
+    if (answers.step6) waLines.push('מנסה למנוע: '     + answers.step6);
+    if (answers.step7) waLines.push('מנגנון הגנה: '    + answers.step7);
+    if (callback)      waLines.push('', 'מבקש/ת בדיקת התאמה קצרה ✓');
+    var waOptMsg = waLines.join('\n');
+    document.getElementById('thankyouWaBtn').href = 'https://wa.me/972528330884?text=' + encodeURIComponent(waOptMsg);
+    document.getElementById('thankyouWaCta').style.display = 'block';
+
+    showScreen('thankyou');
+    document.getElementById('education').style.display = 'block';
+  }
+
+  // ── Init ─────────────────────────────────────────────
+  updateProgress(1);
+</script>
+
+</body>
+</html>
