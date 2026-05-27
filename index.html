@@ -1518,31 +1518,39 @@
     waBtn.href = whatsappUrl;
     document.getElementById('thankyouWaCta').style.display = 'block';
 
-    // Background lead backup — fire and forget, no redirect
-    var leadEndpoint = 'https://script.google.com/macros/s/AKfycbzC9_hPwoZWTFgL48GnrO4V7N_W5-xeXykJXYHEeRE6xbLmk3-TYfnNfx7Ha0XLnI2AHg/exec';
+    // Save lead to Google Sheets before user opens WhatsApp
+    var leadEndpoint = 'https://script.google.com/macros/s/AKfycbxhZHb1mp0rk1gPc4gtgdF-CJ4SU-1WDDS0fPCU_7PiCWeHeEwCVatnoB_cFMX6lRTvvQ/exec';
+    var leadPayload = {
+      name:                name,
+      phoneOriginal:       originalPhone,
+      phoneNormalized:     normalizedPhone,
+      callbackRequest:     callback,
+      lifeArea:            answers.step1     || '',
+      lifeAreaDescription: answers.step1desc || '',
+      bodyLocation:        answers.step2     || '',
+      innerSentence:       answers.step4     || '',
+      voiceTone:           answers.step5     || '',
+      protectedFeeling:    answers.step6     || '',
+      protectionInsight:   answers.step7     || '',
+      resultTitle:         resultTitle,
+      resultKey:           resultType,
+      whatsappMessage:     message,
+      pageUrl:             window.location.href,
+      submittedAt:         new Date().toISOString()
+    };
+    console.log('Sending to Google Sheets:', leadPayload);
     fetch(leadEndpoint, {
       method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        name:                name,
-        phoneOriginal:       originalPhone,
-        phoneNormalized:     normalizedPhone,
-        callbackRequest:     callback,
-        lifeArea:            answers.step1     || '',
-        lifeAreaDescription: answers.step1desc || '',
-        bodyLocation:        answers.step2     || '',
-        innerSentence:       answers.step4     || '',
-        voiceTone:           answers.step5     || '',
-        protectedFeeling:    answers.step6     || '',
-        protectionInsight:   answers.step7     || '',
-        resultTitle:         resultTitle,
-        resultKey:           resultType,
-        pageUrl:             window.location.href,
-        submittedAt:         new Date().toISOString()
-      })
+      mode: 'cors',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify(leadPayload)
+    }).then(function(res) {
+      console.log('Google Sheets response status:', res.status);
+      return res.text();
+    }).then(function(text) {
+      console.log('Google Sheets response body:', text);
     }).catch(function(error) {
-      console.log('Lead backup failed:', error);
+      console.error('Google Sheets submission failed:', error);
     });
   }
 
